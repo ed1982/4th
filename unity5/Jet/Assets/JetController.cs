@@ -20,6 +20,17 @@ public class JetController : MonoBehaviour
         }
     }
 
+    public GameObject Jet_whole;
+    public GameObject Jet_parts;
+
+    void OnCollisionEnter (Collision col)
+    {
+        Jet_whole.SetActive (false);
+        Jet_parts.SetActive (true);
+        Rb.drag = 100000;
+    }
+
+
     public float torque;
 
     [Range (0.0f, 10.0f)] public float Multiplier_Roll = 1.0f;
