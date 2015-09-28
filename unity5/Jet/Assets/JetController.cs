@@ -28,8 +28,24 @@ public class JetController : MonoBehaviour
         Jet_whole.SetActive (false);
         Jet_parts.SetActive (true);
         Rb.drag = 100000;
+
+        Invoke("Reset", 4);
     }
 
+    void Reset ()
+    {
+        transform.position = Vector3.zero;
+        Rb.drag = 1;
+
+        Jet_whole.SetActive (true);
+        Jet_parts.SetActive (false);
+
+        for (int c = 0; c < Jet_parts.transform.childCount; c++)
+        {
+            Jet_parts.transform.GetChild(c).position = Vector3.zero;
+            Jet_parts.transform.GetChild(c).rotation = Quaternion.identity;
+        }
+    }
 
     public float torque;
 

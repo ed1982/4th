@@ -41,7 +41,6 @@ public class ThumbTouchController : MonoBehaviour
         }
     }
 
-
     Vector2 _RightTouch_scaled = new Vector2 ();
     Vector2 RightTouch_scaled
     {
@@ -59,6 +58,15 @@ public class ThumbTouchController : MonoBehaviour
         }
     }
 
+    void Awake ()
+    {
+        #if UNITY_EDITOR
+            controlType = ControlType.KEYBOARD;
+        #else
+            controlType = ControlType.TOUCH;
+        #endif
+
+    }
     public enum ControlType
     {
         TOUCH,
